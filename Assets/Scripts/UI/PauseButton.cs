@@ -4,7 +4,8 @@ using UnityEngine.UI;
 public class PauseButton : MonoBehaviour
 {
     [SerializeField] private Button _button;
-
+    [SerializeField] private RandomAudioButtonPlayer _player;
+    
     private bool _isPaused;
 
     private void OnEnable()
@@ -14,6 +15,8 @@ public class PauseButton : MonoBehaviour
 
     private void SwitchState()
     {
+        _player.Play();
+        
         if (_isPaused)
         {
             TimeState.Resume();

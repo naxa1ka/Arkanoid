@@ -15,6 +15,7 @@ public class LosePanelView : BasePanelView
 
     private void Revive()
     {
+        Player.Play();
         ReviveClicked?.Invoke();
     }
 

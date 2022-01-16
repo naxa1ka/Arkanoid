@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public abstract class BasePanelView : Window
 {
     [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] protected RandomAudioButtonPlayer Player;
     [Space]
     [SerializeField] private Button _replayButton;
     [SerializeField] private Button _mainMenuButton;
@@ -30,11 +31,13 @@ public abstract class BasePanelView : Window
     
     private void Replay()
     {
+        Player.Play();
         ReplayClicked?.Invoke();
     }
 
     private void MainMenu()
     {
+        Player.Play();
         MainMenuClicked?.Invoke();
     }
     

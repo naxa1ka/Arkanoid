@@ -1,27 +1,45 @@
 ﻿using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 using Zenject;
 
 public class SceneChanger
 {
-    private  ZenjectSceneLoader _zenjectLoaderScene;
-    private  ScoreHandler _scoreHandler;
+    private const int MenuBuildIndex = 0;
+    private const int GameBuildIndex = 1;
+
+    private readonly ZenjectSceneLoader _zenjectLoaderScene;
+    private readonly ScoreHandler _scoreHandler;
+
+    private DifficultyEnum _difficulty;
 
     [Inject]
-    private void Constructor(ZenjectSceneLoader zenjectSceneLoader, ScoreHandler scoreHandler)
+    public SceneChanger(ZenjectSceneLoader zenjectSceneLoader, ScoreHandler scoreHandler)
     {
         _scoreHandler = scoreHandler;
         _zenjectLoaderScene = zenjectSceneLoader;
     }
 
+    public void SetDifficulty(DifficultyEnum difficulty)
+    {
+        _difficulty = difficulty;
+    }
+
     public void LoadMenu()
     {
-        LoadScene(0);
+        LoadScene(MenuBuildIndex);
     }
 
     public void LoadGame()
     {
-        LoadScene(1);
+        TimeState.Resume();
+
+        _zenjectLoaderScene.LoadScene(
+            GameBuildIndex,
+            LoadSceneMode.Single,
+            container =>
+            {
+                container.BindInstance(_difficulty).WhenInjectedInto<Installer>();
+            }
+        );
     }
 
     public void ReloadWithProgress()
@@ -29,11 +47,12 @@ public class SceneChanger
         TimeState.Resume();
 
         _zenjectLoaderScene.LoadScene(
-            1,
+            GameBuildIndex,
             LoadSceneMode.Single,
             container =>
             {
                 container.BindInstance(_scoreHandler.Score).WhenInjectedInto<Installer>();
+                container.BindInstance(_difficulty).WhenInjectedInto<Installer>();
             }
         );
     }

@@ -15,6 +15,7 @@ public class WinPanelView : BasePanelView
 
     private void NextLevel()
     {
+        Player.Play();
         NextLevelClicked?.Invoke();
     }
 

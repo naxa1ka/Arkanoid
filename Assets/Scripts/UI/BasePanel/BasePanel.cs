@@ -9,21 +9,16 @@ public abstract class BasePanel : MonoBehaviour
     protected SceneChanger SceneChanger;
 
     [Inject]
-    private void Constructor(SceneChanger sceneChanger)
+    private void Constructor(SceneChanger sceneChanger, ScoreHandler scoreHandler)
     {
         SceneChanger = sceneChanger;
+        _scoreHandler = scoreHandler;
     }
     
     protected void Open()
     {
         TimeState.Stop();
         _basePanel.Open(_scoreHandler.Score);
-    }
-    
-    [Inject]
-    private void Constructor(ScoreHandler scoreHandler)
-    {
-        _scoreHandler = scoreHandler;
     }
     
     private void OnEnable()
