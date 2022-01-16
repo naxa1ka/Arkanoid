@@ -8,17 +8,25 @@ public class Racket : MonoBehaviour
     
     private IInput _input;
 
+    public void SetLength(int difficultyLengthRacket)
+    {
+        var localScale = transform.localScale;
+        localScale.y = difficultyLengthRacket;
+        
+        transform.localScale = localScale;
+    }
+
     public void Revive()
     {
         ResetBall();
     }
-    
+
     [Inject]
     private void Constructor(IInput input)
     {
         _input = input;
     }
-    
+
     private void OnEnable()
     {
         _input.StartButtonClicked += StartButtonClicked;
@@ -40,7 +48,7 @@ public class Racket : MonoBehaviour
         _ball.ResetState(_initialPosition.position, transform);
         _input.StartButtonClicked += StartButtonClicked;
     }
-    
+
     private void StartButtonClicked()
     {
         _ball.RunBall();
@@ -51,13 +59,5 @@ public class Racket : MonoBehaviour
     {
         _input.StartButtonClicked -= StartButtonClicked;
         _ball.Died -= OnDied;
-    }
-
-    public void SetLength(int difficultyLengthRacket)
-    {
-        var localScale = transform.localScale;
-        localScale.y = difficultyLengthRacket;
-        
-        transform.localScale = localScale;
     }
 }
