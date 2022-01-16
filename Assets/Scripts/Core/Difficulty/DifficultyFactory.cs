@@ -7,11 +7,11 @@ public class DifficultyFactory
         switch (difficultyEnum)
         {
             case DifficultyEnum.Easy:
-                return new Difficulty(500, 10);
+                return new Difficulty(10, 4);
             case DifficultyEnum.Normal:
-                return new Difficulty(500, 10);
+                return new Difficulty(15, 3);
             case DifficultyEnum.Hard:
-                return new Difficulty(500, 10);
+                return new Difficulty(17, 2);
             default:
                 throw new ArgumentOutOfRangeException(nameof(difficultyEnum), difficultyEnum, null);
         }

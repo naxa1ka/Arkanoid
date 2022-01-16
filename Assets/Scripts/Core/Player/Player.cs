@@ -5,7 +5,7 @@ public class Player : MonoBehaviour, IHealth
 {
     [SerializeField] private Ball _ball;
 
-    private const int InitHealth = 1;
+    private const int InitHealth = 3;
 
     private int _currentHealth = InitHealth;
     private int Health

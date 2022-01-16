@@ -11,6 +11,6 @@ public class Installer : MonoInstaller
         Container.BindInterfacesAndSelfTo<DesktopInput>().AsSingle();
         Container.BindInstance(new ScoreHandler(_score)).AsSingle();
         Container.Bind<SceneChanger>().AsSingle();
-        Debug.Log(_difficulty);
+        Container.BindInstance(_difficulty);
     }
 }

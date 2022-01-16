@@ -52,4 +52,12 @@ public class Racket : MonoBehaviour
         _input.StartButtonClicked -= StartButtonClicked;
         _ball.Died -= OnDied;
     }
+
+    public void SetLength(int difficultyLengthRacket)
+    {
+        var localScale = transform.localScale;
+        localScale.y = difficultyLengthRacket;
+        
+        transform.localScale = localScale;
+    }
 }

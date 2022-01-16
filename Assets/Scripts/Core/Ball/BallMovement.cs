@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class BallMovement : MonoBehaviour
 {
     [SerializeField] private float _minSpeed;
-    [SerializeField] private Vector2 _initDirection;
+    [SerializeField] private List<Vector2> _initDirections;
 
     private Vector3 _lastFrameVelocity;
     private Rigidbody _rigidBody;
@@ -17,24 +18,35 @@ public class BallMovement : MonoBehaviour
         _isActive = false;
     }
 
+    public void SetSpeed(int difficultySpeed)
+    {
+        _minSpeed = difficultySpeed;
+    }
+
     public void RunBall()
     {
-        _rigidBody.velocity = ComputeSpeed() * _initDirection;
+        _rigidBody.velocity = ComputeSpeed() * _initDirections.RandomItem();
         _isActive = true;
     }
 
     private void OnValidate()
     {
-        for (int i = 0; i < 1; i++)
+        for (var index = 0; index < _initDirections.Count; index++)
         {
-            if (_initDirection[i] > 1)
+            var initDirection = _initDirections[index];
+            for (int i = 0; i < 1; i++)
             {
-                _initDirection[i] = 1;
+                if (initDirection[i] > 1)
+                {
+                    initDirection[i] = 1;
+                }
+                else if (initDirection[i] < -1)
+                {
+                    initDirection[i] = -1;
+                }
             }
-            else if (_initDirection[i] < 0)
-            {
-                _initDirection[i] = 0;
-            }
+
+            _initDirections[index] = initDirection;
         }
     }
 

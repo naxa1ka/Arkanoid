@@ -56,4 +56,9 @@ public class Ball : MonoBehaviour
         
         Hitted?.Invoke(collision);
     }
+
+    public void SetSpeed(int difficultySpeed)
+    {
+        _ballMovement.SetSpeed(difficultySpeed);
+    }
 }
