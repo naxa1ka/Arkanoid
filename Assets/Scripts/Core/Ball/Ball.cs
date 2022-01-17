@@ -6,7 +6,6 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private BallMovement _ballMovement;
-
     private GameObject _fakeParent;
     
     public event Action<Collision> Hitted;

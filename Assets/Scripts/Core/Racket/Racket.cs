@@ -8,6 +8,12 @@ public class Racket : MonoBehaviour
     
     private IInput _input;
 
+    [Inject]
+    private void Constructor(IInput input)
+    {
+        _input = input;
+    }
+
     public void SetLength(int difficultyLengthRacket)
     {
         var localScale = transform.localScale;
@@ -19,12 +25,6 @@ public class Racket : MonoBehaviour
     public void Revive()
     {
         ResetBall();
-    }
-
-    [Inject]
-    private void Constructor(IInput input)
-    {
-        _input = input;
     }
 
     private void OnEnable()
