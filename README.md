@@ -52,5 +52,5 @@
 Продолжение игрового процесса
   
 <p align="left">
-  <img src="Demo/gameField.png" alt="gameField" width ="1280" height="720"/>
+  <img src="Demo/gameField.png" alt="gameField" width ="600" height="338"/>
 </p>
