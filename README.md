@@ -28,3 +28,29 @@
 
 ## Примечание:
 графика не принципиальна, главное, чтобы работали все логики, описанные в тз
+
+## Демонстрация:
+Стартовое меню 
+  
+<p align="left">
+  <img src="Demo/startMenu.png" alt="startMenu" width ="600" height="338"/>
+</p>
+
+Выбор уровня 
+  
+<p align="left">
+  <img src="Demo/selectLevel.png" alt="selectLevel" width ="600" height="338"/>
+</p>
+
+
+Начало игрового процесса
+  
+<p align="left">
+  <img src="Demo/gameFieldStart.png" alt="gameFieldStart" width ="600" height="338"/>
+</p>
+
+Продолжение игрового процесса
+  
+<p align="left">
+  <img src="Demo/gameField.png" alt="gameField" width ="1280" height="720"/>
+</p>
